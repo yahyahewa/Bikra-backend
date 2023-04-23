@@ -1,0 +1,32 @@
+{
+  "name": "bikra-backend",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.index",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yahyahiwa3/Bikra-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yahyahiwa3/Bikra-backend/issues"
+  },
+  "homepage": "https://github.com/yahyahiwa3/Bikra-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.4",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0"
+  }
+}
