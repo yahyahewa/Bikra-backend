@@ -75,7 +75,7 @@ export const filterProduct = async (req, res) => {
   }
 };
 
-// ئەم کۆدە
+//
 export const staticsProduct = async (req, res) => {
   try {
     const stats = await Product.aggregate([
