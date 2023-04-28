@@ -1,0 +1,9 @@
+.env
+
+node_modules
+
+data
+
+uploads/products/*
+
+!uploads/products/def.jpg

@@ -1,12 +1,11 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
-import Seller from "../models/seller.account.model.js";
+import User from "../models/user.model.js";
 import dotenv from "dotenv";
 dotenv.config();
 passport.use(
   "signup",
-  // aw sign up xoman drusy aakain
   new LocalStrategy(
     {
       usernameField: "email",
@@ -15,7 +14,7 @@ passport.use(
     },
     async (req, email, password, done) => {
       try {
-        const user = await Seller.create({
+        const user = await User.create({
           email,
           password,
           username: req.body.username,
@@ -37,7 +36,7 @@ passport.use(
     },
     async (email, password, done) => {
       try {
-        const user = await Seller.findOne({ email });
+        const user = await User.findOne({ email });
         if (!user) {
           return done(null, false, { message: "invalidate credental" });
         }
