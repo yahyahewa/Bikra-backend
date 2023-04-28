@@ -3,7 +3,7 @@
 node_modules
 
 data
+uploads
 
-uploads/products/*
-
-!uploads/products/def.jpg
+!uploads/products/def.jpeg
+!uploads/users/def.jpeg
