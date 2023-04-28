@@ -1,4 +1,6 @@
 import Seller from "../models/seller.account.model.js";
+
+/// create new user
 export const signup = async (req, res, next) => {
   try {
     res.json({ status: "success", data: req.user });
@@ -8,6 +10,7 @@ export const signup = async (req, res, next) => {
   }
 };
 
+/// login user
 export const profile = async (req, res) => {
   try {
     const product = await Seller.findById(req.user.sub);
