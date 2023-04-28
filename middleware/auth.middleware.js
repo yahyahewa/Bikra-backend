@@ -1,6 +1,8 @@
 import passport from "passport";
 import Jwt from "jsonwebtoken";
 import Seller from "../models/seller.account.model.js";
+
+// login middleware
 export const LoginMiddlware = (req, res, next) => {
   passport.authenticate("login", async (err, user, info) => {
     try {
@@ -20,6 +22,7 @@ export const LoginMiddlware = (req, res, next) => {
   })(req, res, next);
 };
 
+// create protect middleware
 export const protect = passport.authenticate("jwt", { session: false });
 export const isAdmin = async (req, res, next) => {
   try {
