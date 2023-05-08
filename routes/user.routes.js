@@ -1,8 +1,12 @@
 import { Router } from "express";
-import { signup } from "../controllers/user.controll.js";
 import passport from "passport";
-import { protect, checkRole } from "../middleware/auth.middleware.js";
-import { profile, Login } from "../controllers/user.controll.js";
+import { protect } from "../middleware/auth.middleware.js";
+import {
+  profile,
+  signup,
+  getUSerWithToken,
+} from "../controllers/user.controll.js";
+import { LoginMiddlware, isAdmin } from "../middleware/auth.middleware.js";
 /**
  * @swagger
  * components:
@@ -150,7 +154,7 @@ const userRouter = Router();
 userRouter
   .route("/signup")
   .post(passport.authenticate("signup", { session: false }), signup);
-userRouter.route("/login").post(Login);
-userRouter.route("/profile").get(protect, checkRole("user"), profile);
-// userRouter.route("/profile").get(protect, profile);
+userRouter.route("/login").post(LoginMiddlware).get(protect, getUSerWithToken);
+// userRouter.route("/profile").get(protect, isAdmin, profile);
+userRouter.route("/profile").get(protect, profile);
 export default userRouter;
