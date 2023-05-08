@@ -18,6 +18,7 @@ export const addToCart = async (req, res) => {
   }
 };
 
+// get orders
 export const getOrders = async (req, res) => {
   try {
     const orders = await Order.find({
