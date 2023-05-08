@@ -1,6 +1,6 @@
 import passport from "passport";
 import Jwt from "jsonwebtoken";
-import Seller from "../models/seller.account.model.js";
+import User from "../models/user.model.js";
 
 // login middleware
 export const LoginMiddlware = (req, res, next) => {
@@ -26,8 +26,9 @@ export const LoginMiddlware = (req, res, next) => {
 export const protect = passport.authenticate("jwt", { session: false });
 export const isAdmin = async (req, res, next) => {
   try {
-    const user = await Seller.findById(req.user.sub);
-    if (!user || user.role !== "admin") {
+    const user = await User.findById(req.user.sub);
+    console.log(user);
+    if (!user || user.role !== "user" || user.role != "admin") {
       return res
         .status(401)
         .json({ status: "fail", message: "not authorized" });
@@ -38,3 +39,4 @@ export const isAdmin = async (req, res, next) => {
     res.status(500).json({ status: "error", message: err.message });
   }
 };
+//////// ---------------- check user ----------------//////////
