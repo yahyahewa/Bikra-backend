@@ -20,7 +20,6 @@ ProductRouter.route("/user/:id").get(protect, getCustomerProducts);
 ProductRouter.route("/agr/").get(staticsProduct);
 ProductRouter.route("/:id").get(getProductById);
 ProductRouter.route("/upload").post(uploadImage, resizeImage, (req, res) => {
-  console.log(req.file);
   res.send({ status: "success", data: req.file.filename });
 });
 ProductRouter.route("/uploads").post(uploadImages, resizeImages, (req, res) => {

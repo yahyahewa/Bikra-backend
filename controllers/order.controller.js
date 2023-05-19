@@ -40,3 +40,35 @@ export const deleteOrder = async (req, res) => {
     res.status(400).json({ status: "fail", message: err.message });
   }
 };
+
+//check out
+export const Checkout = async (req, res) => {
+  try {
+    const list = await Order.find({
+      customer: req.body.customer,
+      status: "basket",
+    });
+    list.forEach(async (item) => {
+      await Order.findByIdAndUpdate(item._id, {
+        status: "checkout",
+      });
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+// get order into account
+export const getOrdersAccount = async (req, res) => {
+  try {
+    const orders = await Order.find({
+      customer: req.body.id,
+      status: "checkout",
+    }).populate("product");
+    const customer = await User.findById(orders[0].customer);
+    res
+      .status(200)
+      .json({ status: "success", data: orders, custdata: customer });
+  } catch (err) {
+    res.status(400).json({ status: "fail", message: err.message });
+  }
+};

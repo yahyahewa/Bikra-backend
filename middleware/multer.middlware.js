@@ -17,12 +17,14 @@ export const uploadImages = upload.array("photos", 10);
 export const resizeImage = async (req, res, next) => {
   try {
     if (!req.file) return next();
-    req.file.filename = `product-${Date.now()}.jpeg`;
+    req.file.filename = `image-${Date.now()}${Math.floor(
+      Math.random() * 900000
+    )}.jpeg`;
     await sharp(req.file.buffer)
       .resize(500)
       .toFormat("jpeg")
       .jpeg({ quality: 90 })
-      .toFile(`uploads/products/${req.file.filename}`);
+      .toFile(`uploads/image/${req.file.filename}`);
 
     next();
   } catch (err) {
