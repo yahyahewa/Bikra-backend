@@ -22,7 +22,7 @@ export const resizeImage = async (req, res, next) => {
       .resize(500)
       .toFormat("jpeg")
       .jpeg({ quality: 90 })
-      .toFile(`uploads/products/${req.file.filename}`);
+      .toFile(`uploads/image/${req.file.filename}`);
 
     next();
   } catch (err) {
@@ -38,7 +38,7 @@ export const resizeImages = async (req, res, next) => {
         .resize(500)
         .toFormat("jpeg")
         .jpeg({ quality: 90 })
-        .toFile(`uploads/products/${req.files[i].filename}`);
+        .toFile(`uploads/image/${req.files[i].filename}`);
     }
     next();
   } catch (err) {
