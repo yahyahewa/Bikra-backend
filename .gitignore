@@ -3,7 +3,6 @@
 node_modules
 
 data
-uploads
 
 !uploads/products/def.jpeg
 !uploads/users/def.jpeg
