@@ -64,4 +64,4 @@ export const resizeImages = async (req, res, next) => {
 //       cb(new Error("Not an image! Please upload an image."), false);
 //     }
 //   },
-// });
+// }); //
