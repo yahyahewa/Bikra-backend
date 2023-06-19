@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 /// category models
 const categorySchema = new mongoose.Schema({
-  name: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
   imgae: {
     type: String,
     default: `https://cdn3d.iconscout.com/3d/premium/thumb/category-6434155-5350238.png`,
